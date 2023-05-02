@@ -43,7 +43,7 @@ const path = __importStar(require("path"));
 const axios_1 = __importDefault(require("axios"));
 class FFMPEG {
     constructor() {
-        this.watermarkPath = path.resolve(__dirname, "../../overlay/watermark.png");
+        this.watermarkPath = path.resolve(__dirname, "../../overlay/allinpod-watermark.png");
         this.outputPath = path.resolve(__dirname, "../../outDir/video.mp4");
         this.finalVideo = path.resolve(__dirname, "../../outDir/videoWithWatermark.mp4");
     }
@@ -106,11 +106,11 @@ class FFMPEG {
                                 console.log(err);
                                 reject(err);
                             }
-                            // fs.unlink(this.finalVideo, (err) => {
-                            //     if (err) {
-                            //         console.log(err);
-                            //     }
-                            // });
+                            fs.unlink(this.finalVideo, (err) => {
+                                if (err) {
+                                    console.log(err);
+                                }
+                            });
                             resolve(data);
                         }));
                     });

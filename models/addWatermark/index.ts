@@ -11,7 +11,7 @@ class FFMPEG {
     finalVideo: string;
 
     constructor() {
-        this.watermarkPath = path.resolve(__dirname, "../../overlay/watermark.png");
+        this.watermarkPath = path.resolve(__dirname, "../../overlay/allinpod-watermark.png");
         this.outputPath = path.resolve(__dirname, "../../outDir/video.mp4");
         this.finalVideo = path.resolve(__dirname, "../../outDir/videoWithWatermark.mp4");
     }

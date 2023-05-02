@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && tsc && mkdir dist/overlay && mkdir dist/outDir && cp overlay/watermark.png dist/overlay",
+    "build": "rimraf dist && tsc && mkdir dist/overlay && mkdir dist/outDir && cp overlay/allinpod-watermark.png dist/overlay",
     "prestart": "yarn build",
     "start": "node dist/server.js",
     "preserve": "yarn build",
