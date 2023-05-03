@@ -5,15 +5,28 @@ import * as fs from "fs";
 import * as path from "path";
 import axios from "axios";
 
+// create a function that generates a random string
+// with a given length
+const generateRandomString = (length: number) => {
+    let result = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i += 1) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+};
+
 class FFMPEG {
+    id: string = generateRandomString(10);
     watermarkPath: string;
     outputPath: string;
     finalVideo: string;
 
     constructor() {
         this.watermarkPath = path.resolve(__dirname, "../../overlay/allinpod-watermark.png");
-        this.outputPath = path.resolve(__dirname, "../../outDir/video.mp4");
-        this.finalVideo = path.resolve(__dirname, "../../outDir/videoWithWatermark.mp4");
+        this.outputPath = path.resolve(__dirname, `../../outDir/${this.id}.mp4`);
+        this.finalVideo = path.resolve(__dirname, `../../outDir/${this.id}-final.mp4`);
     }
 
     getVideoData(url: string): Promise<Buffer> {

@@ -41,11 +41,23 @@ const fluent_ffmpeg_1 = __importDefault(require("fluent-ffmpeg"));
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const axios_1 = __importDefault(require("axios"));
+// create a function that generates a random string
+// with a given length
+const generateRandomString = (length) => {
+    let result = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i += 1) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+};
 class FFMPEG {
     constructor() {
+        this.id = generateRandomString(10);
         this.watermarkPath = path.resolve(__dirname, "../../overlay/allinpod-watermark.png");
-        this.outputPath = path.resolve(__dirname, "../../outDir/video.mp4");
-        this.finalVideo = path.resolve(__dirname, "../../outDir/videoWithWatermark.mp4");
+        this.outputPath = path.resolve(__dirname, `../../outDir/${this.id}.mp4`);
+        this.finalVideo = path.resolve(__dirname, `../../outDir/${this.id}-final.mp4`);
     }
     getVideoData(url) {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
