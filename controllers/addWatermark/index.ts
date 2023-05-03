@@ -7,7 +7,8 @@ class AddWatermark {
     async addWatermark(req: Request, res: Response) {
         try {
             const { video_url, video_id, test } = req.body;
-            const videoData = await FFMPEG.getVideoData(video_url);
+            const ffmpeg = new FFMPEG(video_id);
+            const videoData = await ffmpeg.getVideoData(video_url);
             // const url = 'http://127.0.0.1:5001/all-in-pod/us-central1/addWaterMarkToVideo';
             const url = 'https://us-central1-all-in-pod.cloudfunctions.net/addWaterMarkToVideo'
             const data = {

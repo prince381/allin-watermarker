@@ -18,12 +18,13 @@ const generateRandomString = (length: number) => {
 };
 
 class FFMPEG {
-    id: string = generateRandomString(10);
+    id: string;
     watermarkPath: string;
     outputPath: string;
     finalVideo: string;
 
-    constructor() {
+    constructor(id: string) {
+        this.id = id;
         this.watermarkPath = path.resolve(__dirname, "../../overlay/allinpod-watermark.png");
         this.outputPath = path.resolve(__dirname, `../../outDir/${this.id}.mp4`);
         this.finalVideo = path.resolve(__dirname, `../../outDir/${this.id}-final.mp4`);
@@ -135,4 +136,4 @@ class FFMPEG {
     // }
 }
 
-export default new FFMPEG();
+export default FFMPEG;
