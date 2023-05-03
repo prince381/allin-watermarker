@@ -30,4 +30,4 @@ ENV NODE_ENV=development
 ENV PORT=8080
 ENV ORIGIN=*
 
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "--max-old-space-size=2048", "start" ]
